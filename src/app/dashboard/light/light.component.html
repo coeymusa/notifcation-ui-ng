@@ -1,0 +1,6 @@
+<div class="container d-flex">
+  <p *ngFor="let light of lightData">
+    <app-single-light [singleLight]="light"></app-single-light>
+  </p>
+  <button type='button' (click)='getLights()'>Get Lights</button>
+</div>

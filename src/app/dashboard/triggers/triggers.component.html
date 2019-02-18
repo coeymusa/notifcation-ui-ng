@@ -1,0 +1,66 @@
+<div class="container-fluid d-flex">
+  <div class="d-flex w-10 flex-column m-25">
+    <button
+      type="button"
+      class="btn-primary"
+      data-toggle="modal"
+      data-target="#newTriggerModel"
+    >
+      Add Trigger
+    </button>
+    <button (click)= "removeTriggers()" class="btn-primary">Delete Trigger</button>
+  </div>
+
+  <div class="container d-flex flex-row m-0">
+      <div *ngFor="let trigger of triggerData" (click) = "selectTrigger(trigger)"> 
+          <app-single-trigger [singleTrigger]="trigger"></app-single-trigger>
+      </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  id="newTriggerModel"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Trigger</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="newTriggerForm">
+          <div class="form-group">
+            <label for="inputName"> Name:</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Spongebob Squarepants" />
+          </div>
+          <div class="form-group">
+            <label for="inputColor"> Colour:</label>
+            <input type="text" class="form-control" formControlName="colour" placeholder="Red" />
+          </div>
+          <div class="form-group">
+            <label for="inputEffect">Effect:</label>
+            <input type="text" class="form-control" formControlName="effect" placeholder="" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button [disabled] ='!formIsValid()' type="submit" (click)="submitNewTrigger()" class="btn btn-primary" data-dismiss="modal">Create Trigger</button>
+      </div>
+    </div>
+  </div>
+</div>
