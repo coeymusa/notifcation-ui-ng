@@ -1,11 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-
-interface Light {
-  name: String;
-  color: String;
-  active: boolean;
-}
+import { LightServiceService } from '../light/light-service.service';
+import { Light, LightResponse } from '../light/light-types';
 
 @Component({
   selector: 'app-single-light',
@@ -14,14 +9,17 @@ interface Light {
 })
 export class SingleLightComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly lightService: LightServiceService) { }
 
-  @Input() singleLight: Light;
+  @Input() currentLight: Light;
   ngOnInit() {
   }
 
-  turnOffLight(light) {
-    light.active = false;
+  turnOffLight() {
+    this.currentLight.on = !this.currentLight.on;
+    this.lightService.postLight(this.currentLight).subscribe((response: LightResponse) => {
+      console.log(response);
+      //this.currentLight.on = response.state.on;
+    });
   }
-
 }

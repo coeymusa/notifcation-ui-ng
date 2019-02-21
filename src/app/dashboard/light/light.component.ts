@@ -15,7 +15,7 @@ export class LightComponent {
     private readonly cd: ChangeDetectorRef
   ) {}
 
-  lightData: Light[] | undefined;
+  lightData: Light | undefined;
   loadingState = true;
   loadingErrorState = false;
   private readonly lightSubject = new BehaviorSubject(undefined);
@@ -33,10 +33,10 @@ export class LightComponent {
     })
   );
 
-  lightSubscription: Subscription = this.lightsObservable.subscribe(
+  private readonly lightSubscription: Subscription = this.lightsObservable.subscribe(
     response => {
       console.log(response);
-      this.lightData.push(response);
+      this.lightData = response;
       this.cd.markForCheck();
     }
   );
@@ -45,9 +45,17 @@ export class LightComponent {
     this.lightSubject.next(undefined);
   }
 
-  postLight(light: Light) {
-    this.srv.getLightData().subscribe(res => {
-      console.log(res);
-    });
+  turnOffAllLights() {
+   this.lightData.forEach(light => {
+     light.on = false;
+     this.srv.postLight(light).subscribe();
+   });
   }
+
+  turnOnAllLights() {
+    this.lightData.forEach(light => {
+      light.on = true;
+      this.srv.postLight(light).subscribe();
+    });
+   }
 }

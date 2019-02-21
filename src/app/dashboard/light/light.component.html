@@ -1,6 +1,9 @@
 <div class="container d-flex">
+  <div>
+    <button (click)="turnOffAllLights()">Turn all off</button>
+    <button (click)="turnOnAllLights()">Turn all on</button>
+  </div>
   <p *ngFor="let light of lightData">
-    <app-single-light [singleLight]="light"></app-single-light>
+    <app-single-light [currentLight]="light"></app-single-light>
   </p>
-  <button type='button' (click)='getLights()'>Get Lights</button>
 </div>

@@ -2,14 +2,14 @@
     <div class="card">
       <img
         class="card-image-top"
-        (click)="turnOffLight(singleLight)"
+        (click)="turnOffLight()"
         src="../../assets/light.jpg"
         alt="Card image cap"
       />
-      <div class="class-title"> {{singleLight.name}}</div>
+      <div class="class-title"> {{currentLight.name}}</div>
       <div class="card-body">
-        <p> {{singleLight.active}} </p>  
-        <p> {{singleLight.color}} </p> 
+        <p> {{currentLight.on}} </p>  
+        <p> {{currentLight.color}} </p> 
       </div>
     </div>
   </div>
