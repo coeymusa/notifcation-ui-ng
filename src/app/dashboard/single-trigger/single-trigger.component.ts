@@ -9,7 +9,7 @@ export class SingleTriggerComponent implements OnInit {
 
   @Input() singleTrigger;
   constructor() { }
-
+  isSelected = false;
   ngOnInit() {
   }
 

@@ -1,12 +1,3 @@
-export interface Light {
-  id: number;
-  on: boolean;
-  xy: number[];
-  name: string;
-  reachable: string;
-  forEach(arg0: (light: any) => void): any;
-}
-
 export interface State {
   on: boolean;
   bri: number;
@@ -21,10 +12,11 @@ export interface State {
   reachable: boolean;
 }
 
-export interface LightResponse {
+export interface Light{
   id: number;
   state: State;
   type: string;
   name: string;
   uniqueId: string;
+  forEach(arg0: (light: any) => void): any;
 }

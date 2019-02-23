@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LightServiceService } from '../light/light-service.service';
-import { Light, LightResponse } from '../light/light-types';
+import { Light } from '../light/light-types';
 
 @Component({
   selector: 'app-single-light',
@@ -8,18 +8,24 @@ import { Light, LightResponse } from '../light/light-types';
   styleUrls: ['./single-light.component.css']
 })
 export class SingleLightComponent implements OnInit {
-
   constructor(private readonly lightService: LightServiceService) { }
-
   @Input() currentLight: Light;
   ngOnInit() {
   }
 
-  turnOffLight() {
-    this.currentLight.on = !this.currentLight.on;
-    this.lightService.postLight(this.currentLight).subscribe((response: LightResponse) => {
+  onInputChange(event: any) {
+    this.currentLight.state.bri = event.value;
+    this.postLight();
+  }
+
+  postLight() {
+    this.lightService.postLight(this.currentLight).subscribe((response: Light) => {
       console.log(response);
-      //this.currentLight.on = response.state.on;
     });
+  }
+
+  turnOffLight() {
+    this.currentLight.state.on = !this.currentLight.state.on;
+    this.postLight();
   }
 }

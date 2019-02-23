@@ -1,16 +1,26 @@
 <div class="container">
-  <div [ngClass]="{'background-clicked': selected}" (click)="selected = !selected" class="card">
+  <div 
+    (click)="selected = !selected" 
+    class="">
     <img
+      *ngIf="!selected"
       class="card-image-top"
       (click)="turnOffTrigger(singleTrigger)"
       src="../../assets/exclam.jpg"
       alt="Card image cap"
     />
+    <img
+    *ngIf="selected"
+    class="card-image-top"
+    (click)="turnOffTrigger(singleTrigger)"
+    src="../../assets/exclam-red.jpg"
+    alt="Card image cap"
+  />
     <div class="class-title"> {{ singleTrigger.name }}</div>
     <div class="card-body">
-      <p>{{ singleTrigger.active }} </p>
-      <p>{{ singleTrigger.colour }} </p> 
-      <p> {{ singleTrigger.effect }} </p> 
+      <p>Active: {{ singleTrigger.active }} </p>
+      <p>Colour: {{ singleTrigger.colour }} </p> 
+      <p>Effect: {{ singleTrigger.effect }} </p> 
     </div>
   </div>
 </div>

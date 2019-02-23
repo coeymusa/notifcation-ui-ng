@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Light, LightResponse } from './light-types';
+import { Light } from './light-types';
 import {
   HttpClient,
   HttpErrorResponse,

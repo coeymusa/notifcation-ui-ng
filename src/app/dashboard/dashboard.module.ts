@@ -7,7 +7,7 @@ import { SingleLightComponent } from './single-light/single-light.component';
 import { SingleTriggerComponent } from './single-trigger/single-trigger.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatSliderModule } from '@angular/material/slider';
 const routes: Routes = [
   { path: '', redirectTo: 'triggers', pathMatch: 'full' },
   { path: 'lights', component: LightComponent },
@@ -25,6 +25,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSliderModule,
     RouterModule.forChild(routes)
   ]
 })

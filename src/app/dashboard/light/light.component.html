@@ -1,9 +1,16 @@
-<div class="container d-flex">
-  <div>
-    <button (click)="turnOffAllLights()">Turn all off</button>
-    <button (click)="turnOnAllLights()">Turn all on</button>
+<div class="container-fluid d-flex">
+  <div class="flex-rowjustify-content-between">
+    <div>
+        <button class="m-1 btn-primary w-100" (click)="turnOffAllLights()">All off</button>
+    </div>
+    <div>
+        <button class="m-1 btn-primary w-100" (click)="turnOnAllLights()">All on</button>
+    </div>
   </div>
-  <p *ngFor="let light of lightData">
-    <app-single-light [currentLight]="light"></app-single-light>
-  </p>
+  <div class=" d-flex">
+    <p *ngFor="let light of lightData">
+      <app-single-light [currentLight]="light"></app-single-light>
+    </p>
+  </div>
+
 </div>
