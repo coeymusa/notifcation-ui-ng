@@ -12,7 +12,7 @@ export interface State {
   reachable: boolean;
 }
 
-export interface Light{
+export interface Light {
   id: number;
   state: State;
   type: string;

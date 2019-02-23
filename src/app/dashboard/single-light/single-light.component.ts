@@ -28,4 +28,9 @@ export class SingleLightComponent implements OnInit {
     this.currentLight.state.on = !this.currentLight.state.on;
     this.postLight();
   }
+  changeColour(hexColour: any) {
+    this.currentLight.state.xy = this.lightService.convertColourToXy(hexColour);
+    this.postLight();
+  }
+
 }

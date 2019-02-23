@@ -8,6 +8,8 @@ import { SingleTriggerComponent } from './single-trigger/single-trigger.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
+import { ColorPickerModule } from 'ngx-color-picker';
+
 const routes: Routes = [
   { path: '', redirectTo: 'triggers', pathMatch: 'full' },
   { path: 'lights', component: LightComponent },
@@ -26,6 +28,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     MatSliderModule,
+    ColorPickerModule,
     RouterModule.forChild(routes)
   ]
 })
